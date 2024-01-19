@@ -96,7 +96,7 @@ body{
   margin-right: 15em;
   padding: 1em;
   width: 70px;
-  
+  cursor: pointer;
 }
 /* Style the cart icon */
 .fa-solid.fa-cart-shopping {
@@ -149,7 +149,7 @@ display: none;
   list-style: none; 
   padding: 10px 20px;
   position: relative;
-
+  cursor: pointer;
 }
 
 #navbar li a{

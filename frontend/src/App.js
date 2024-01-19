@@ -15,6 +15,8 @@ import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Cart from "./pages/cart/Cart";
 import './shop.css';
+import Modal from "./Admin/modalsample";
+
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
@@ -32,6 +34,7 @@ function App() {
           <Route path="/dash" element={<Dashboard/>} />
           <Route path="/login" element={<Login/>} />
           <Route path="/register" element={<Register/>} />
+          <Route path="/modal" element={<Modal/>} />
         </Routes>
       </BrowserRouter>
     </div>

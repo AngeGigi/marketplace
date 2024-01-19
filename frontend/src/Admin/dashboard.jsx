@@ -105,7 +105,7 @@ const Dash = () => {
         <div className="section-marketplace">
           <table className="table-crochet">
             <thead>
-              <tr>
+              <tr>                   
                 <th>Crochet Id</th>
                 <th>Name</th>
                 <th>Description</th>

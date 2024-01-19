@@ -10,7 +10,7 @@ import keychain from "../images/prod-img/Crochet Daisy Keychain.jpg";
 import jacket from "../images/prod-img/crochet pattern for girls jacket.jpg";
 import clip from "../images/clip.jpg";
 import hat from "../images/hat.jpg";
-import bag from "../images/prod-img/Crochet Minimalist Hobo Bag.jpg";
+import bokey from "../images/Crochet bouquet ✿.jpg";
 
 
 const Home = () => {
@@ -19,6 +19,9 @@ const Home = () => {
 
   const cartNavigate =() =>{
     navigate('/shop')
+  };
+  const userNavigate =() =>{
+    navigate('/login')
   };
  
   return(
@@ -32,8 +35,8 @@ const Home = () => {
             <li><a onClick={cartNavigate}>Shop</a></li>
           </ul>
           <ul id="icon-cart">
-            <li><a href="cart.html"style={{color: "black"}}><FontAwesomeIcon icon={faCartShopping} /></a></li>
-            <li><a href="user.html"style={{color: "black"}}><FontAwesomeIcon icon={faUser} /></a></li>
+            <li><a href="cart.html" style={{color: "black"}}><FontAwesomeIcon icon={faCartShopping} /></a></li>
+            <li><a onClick={userNavigate} style={{color: "black"}}><FontAwesomeIcon icon={faUser} /></a></li>
           </ul>   
         </div>
 
@@ -50,88 +53,87 @@ const Home = () => {
       </section>
 
       <section>
-      <section id="product1" class="section-p1">
-        <h2>Feature Collection</h2>
-        <p>Summer Collection New Modern Design</p>
-        <div class="pro-container">
-          <div class="pro" onclick="window.location.href='https://codepen.io/Motun/full/OJBwbrQ'">
-            <img src={top} alt=""/>
-            <div class="des">
-              <h5>Carton Astronault Tshirts</h5>
-            </div>
-          </div>
-    
-          <div class="pro">
-            <img src={flower} alt=""/>
-            <div class="des">
+        <section id="product1" class="section-p1">
+            <h2>Feature Collection</h2>
+            <p>Summer Collection New Modern Design</p>
+            <div class="pro-container">
+              <div class="pro" onclick="window.location.href='https://codepen.io/Motun/full/OJBwbrQ'">
+                <img src={top} alt=""/>
+                <div class="des">
+                  <h5>Carton Astronault Tshirts</h5>
+                </div>
+              </div>
+        
+              <div class="pro">
+                <img src={flower} alt=""/>
+                <div class="des">
+                  
+                  <h5>Carton Leave Tshirts</h5>
+                  
+                </div>
+        
+              </div>
+        
+              <div class="pro">
+                <img src={bokey} alt=""/>
+                <div class="des">
+                  <h5>Rose Multicolor Tshirts</h5>
+                
+                </div>
+                
+              </div>
+        
+              <div class="pro">
+                <img src={keychain} alt=""/>
+                <div class="des">
+                
+                  <h5>Pink Flower Tshirts</h5>
+                  
+                </div>
               
-              <h5>Carton Leave Tshirts</h5>
+              </div>
+        
+              <div class="pro">
+                <img src={bloom} alt=""/>
+                <div class="des">
+                  
+                  <h5>Purple Flowering Tshirts</h5>
+                
+                </div>
+              </div>
+        
+              <div class="pro">
+                <img src={jacket} alt=""/>
+                <div class="des">
+                  
+                  <h5>Short Knicker </h5>
+                
+                </div>
+                
+              </div>
+        
+              <div class="pro">
+                <img src={clip} alt=""/>
+                <div class="des">
+                
+                  <h5>2 in 1 Double Routed</h5>
+                  
+                </div>
+                
+              </div>
+        
+              <div class="pro">
+                <img src={hat} alt=""/>
+                <div class="des">
+                
+                  <h5>Ash Short</h5>
               
-            </div>
-    
-          </div>
-    
-          <div class="pro">
-            <img src={bag} alt=""/>
-            <div class="des">
-             
-              <h5>Rose Multicolor Tshirts</h5>
-            
-            </div>
-            
-          </div>
-    
-          <div class="pro">
-            <img src={keychain} alt=""/>
-            <div class="des">
-             
-              <h5>Pink Flower Tshirts</h5>
+                </div>
               
+              </div>
+        
             </div>
-           
-          </div>
-    
-          <div class="pro">
-            <img src={bloom} alt=""/>
-            <div class="des">
-              
-              <h5>Purple Flowering Tshirts</h5>
-             
-            </div>
-          </div>
-    
-          <div class="pro">
-            <img src={jacket} alt=""/>
-            <div class="des">
-              
-              <h5>Short Knicker </h5>
-             
-            </div>
-            
-          </div>
-    
-          <div class="pro">
-            <img src={clip} alt=""/>
-            <div class="des">
-             
-              <h5>2 in 1 Double Routed</h5>
-              
-            </div>
-            
-          </div>
-    
-          <div class="pro">
-            <img src={hat} alt=""/>
-            <div class="des">
-             
-              <h5>Ash Short</h5>
-          
-            </div>
-          
-          </div>
-    
-        </div>
-    </section>
+        </section>
       </section>
 
       <section id="banner3" className="section-p1">

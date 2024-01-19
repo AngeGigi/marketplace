@@ -39,14 +39,18 @@ const handleClick= async e=>{
 
     console.log(items)
     return(
-        <div className='form'>
-        <h1>Add new Items</h1>
-        <input type='text' placeholder='name' onChange={handleChange} name="crochet_name" /> 
-        <input type='text' placeholder='description' onChange={handleChange} name="crochet_deests"/> 
-        <input type='file' placeholder='image' onChange={handleChange} name="image"/>
-        <input type='number' placeholder='price' onChange={handleFileChange} name="price"/>   
+    
+        <div className='add-content'>
+            <div className='form'>
+                <h1>Add new Items</h1>
+                <input type='text' placeholder='name' onChange={handleChange} name="crochet_name" /> 
+                <input type='text' placeholder='description' onChange={handleChange} name="crochet_deests"/> 
+                <input type='file' placeholder='image' style={{width:'172px'}} onChange={handleChange} name="image"/>
+                <input type='text' placeholder='price' onChange={handleFileChange} name="price"/>   
 
-        <button onClick={handleClick}>Add</button>
+                <button onClick={handleClick}>Add</button>
+            </div>
+        
         </div>
         
     )
