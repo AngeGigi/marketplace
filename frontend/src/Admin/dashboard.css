@@ -1,0 +1,188 @@
+.marketplacemainpage{
+    
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+
+.marketplacecontainer{
+    width: 95%;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+
+
+}
+
+.section-marketplace {
+
+
+  }
+  
+  .table-crochet {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .table-crochet th, .table-crochet td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .table-crochet th {
+    background-color: #f2f2f2;
+  }
+  
+  /* Add more styling as needed */
+  
+  /* Example: Style the table rows alternately for better readability */
+  .table-crochet tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Example: Hover effect on rows */
+  .table-crochet tbody tr:hover {
+    background-color: #e0e0e0;
+
+  }
+  
+
+  .table-crochet tbody tr{
+    height: 3rem;
+  }
+
+  .actionbtntd{
+    width: 30%;
+  }
+  .addnewprod{
+    height: 10%;
+    width:20%;
+    background-color: black;
+    border-radius: 10px;
+    border: none; 
+    border-width: 2px;
+    border-color: #23d3ad;
+    box-shadow: rgba(1, 1, 2, 0.2) 0 2px 4px, rgba(83, 109, 254, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  .addtext{
+    text-decoration: none;
+    color:rgb(255, 255, 255);
+    font-weight: 9em;
+    cursor: pointer;
+  }
+  .addnewprod:hover{
+    border: 10px black;
+    background-color: white;
+
+  }
+
+  .addtext:hover{
+    color: black;
+  }
+
+  .subbtn{
+    height:5%;
+    width:10%;
+    background-color: black;
+    border-radius: 10px;
+    border: none; 
+    border-width: 2px;
+    border-color: #23d3ad;
+    box-shadow: rgba(1, 1, 2, 0.2) 0 2px 4px, rgba(83, 109, 254, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  .subbtn:hover{
+    border: 10px black;
+    background-color: white;
+  }
+  .update{
+    height:5%;
+    width:10%;
+    background-color: black;
+    border-radius: 10px;
+    border: none; 
+    border-width: 2px;
+    border-color: #23d3ad;
+    box-shadow: rgba(1, 1, 2, 0.2) 0 2px 4px, rgba(83, 109, 254, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  .update:hover{
+    border: 10px black;
+    background-color: white;
+  }
+  .delete{
+    height:5%;
+    width:10%;
+    background-color: black;
+    border-radius: 10px;
+    border: none; 
+    border-width: 2px;
+    border-color: #23d3ad;
+    box-shadow: rgba(1, 1, 2, 0.2) 0 2px 4px, rgba(83, 109, 254, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  .delete:hover{
+    border: 10px black;
+    background-color: white;
+  }
+
+
+
+
+  .button {
+    align-items: center;
+    appearance: none;
+    background-color: #EEF2FF;
+    border-radius: 8px;
+    border-width: 2px;
+    border-color: #536DFE;
+    box-shadow: rgba(83, 109, 254, 0.2) 0 2px 4px, rgba(83, 109, 254, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    box-sizing: border-box;
+    color: #536DFE;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "JetBrains Mono", monospace;
+    height: 10px;
+    justify-content: center;
+    line-height: 1;
+    list-style: none;
+    overflow: hidden;
+    padding-left: 24px;
+    padding-right: 24px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: box-shadow 0.15s, transform 0.15s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    will-change: box-shadow, transform;
+    font-size: 20px;
+  }
+  
+  .addnewprod:focus {
+    outline: none;
+    box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(83, 109, 254, 0.4) 0 2px 4px, rgba(83, 109, 254, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  }
+  
+  .adddnewprod:hover {
+    box-shadow: rgba(83, 109, 254, 0.3) 0 4px 8px, rgba(83, 109, 254, 0.2) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+    transform: translateY(-2px);
+  }
+  
+  .button:active {
+    box-shadow: #D6D6E7 0 3px 7px inset;
+    transform: translateY(2px);
+  }
