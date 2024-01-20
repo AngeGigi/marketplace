@@ -68,18 +68,6 @@ const Shop = () => {
   </div>
 </div>
 
-
-<section id="newsletter" className="section-p1">
-          <div className="newstext">
-            <h4>Sign up for updates</h4>
-            <p>Get Email updates about your purchased and <span> our latest product.</span> </p>
-          </div>
-          <div className="form">
-            <input type="text" placeholder="Your email address"/>
-            <button className="btn normal">Sign Up</button>
-          </div>
-      </section> 
-
     </div>
 
     

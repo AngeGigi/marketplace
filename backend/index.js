@@ -18,15 +18,17 @@ const db = mysql.createConnection({
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb){
-        cd(null, "./public/images")
+        cb(null, "./public/images")
     },
-    filename: (req, file, cb) => {
-        console.log(file)
-        cb(null, Date.now()+ path.extname(file.originalname))
+    filename: function (req, file, cb) {
+        cb(null, file.filename + "_" + Date.now()+ path.extname(file.originalname))
     }
 });
 
-const upload = multer({storage: storage})
+const upload = multer({storage: storage});
+const adminupload = multer({storage: storage});
+
+app.post("/crochet", adminupload.single)
 
 
 app.get("/upload", (req,res)=>{
@@ -50,7 +52,7 @@ app.get("/crochet",(req, res)=>{
 });
 
 app.post("/add/crochet", upload.single('image'), (req, res) => {
-    const q = "INSERT INTO crochet (crochet_name, crochet_deets, image, price) VALUE (?)";
+    const q = "INSERT INTO crochet (`crochet_name`, `crochet_deets`, `image`, `price`) VALUE (?)";
     const values = [
         req.body.crochet_name,
         req.body.crochet_deets,
@@ -65,6 +67,26 @@ app.post("/add/crochet", upload.single('image'), (req, res) => {
         return res.json(data)
     })
 })
+
+app.post("/adminuser", (res,req) =>{
+    console.log("Received login request:", req.body);
+    const { username, password} = req.body;
+
+    const q = "SELECT * FROM adminuser WHERE username =? AND password =?";
+    db.query(q, [username, password], (error, results)=>{
+        if(error){
+            console.error('Error executing MSQL query:', error);
+            res.status(500).json({success:false, message:'Internal Server Error'});
+        } else {
+            if (results.length > 0){
+                res.json({success:true, message:'Authentication successful'});
+            } else{
+                res.json({success:false, message:'Invalid credentials'});
+            }
+        }
+    });
+
+});
 
 
 
@@ -93,8 +115,8 @@ app.delete("/crochet/:id", (req, res) =>{
 });
 
 app.put("/crochet:id", (req, res) => {
-    const idcrochet =req.params.id;
-    const q = "UPDATE crochet SET crochet_name =?, crochet_deets =?, price =?, image = ? WHERE id =?";
+    const d =req.params.id;
+    const q = "UPDATE crochet SET `crochet_name` =?, `crochet_deets` =?, `price` =?, `image` = ? WHERE id =?";
 
     const values =[
         req.body.crochet_name,
@@ -103,8 +125,7 @@ app.put("/crochet:id", (req, res) => {
         idcrochet,
     ];
 
-    db.query(q,values, (err, data) => {
-
+    db.query(q,[...values, d], (err, data) => {
         if(err) return res.json(err);
         return res.json("Update Successfully");
 

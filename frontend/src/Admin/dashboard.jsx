@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Dash = () => {
   const [crochet, setCrochet] = useState([]);
@@ -12,6 +15,16 @@ const Dash = () => {
     image: '',
     price: null,
   });
+  
+  const navigate = useNavigate();
+  const location = useLocation();
+  const d =location.pathname.split("/")[2]
+
+
+  const cartNavigate =() =>{
+    navigate('/shop')
+  };
+  
 
   useEffect(() => {
     const fetchAllItems = async () => {
@@ -50,6 +63,7 @@ const Dash = () => {
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
   
 
   const handleUpdate = async () => {
@@ -74,8 +88,9 @@ const Dash = () => {
       }
 
       // Refresh the crochet items after update
-      const updatedItems = await axios.get('http://localhost:8000/crochet');
+      const updatedItems = await axios.put('http://localhost:8000/crochet'+ d, crochet);
       setCrochet(updatedItems.data);
+      navigate("/dash");
 
       // Close the update modal
       closeUpdateModal();
@@ -99,6 +114,21 @@ const Dash = () => {
   return (
 
   <div>
+      <section id="header">
+        <h1><i>Dashboard</i></h1>
+        <div>
+          <ul id="navbar">
+            <li><a className="active" href="Home.jsx">Home</a></li>
+            <li><a onClick={cartNavigate}>Shop</a></li>
+          </ul>
+          <ul id="icon-cart">
+            <li><a href="cart.html" style={{color: "black"}}><FontAwesomeIcon icon={faCartShopping} /></a></li>
+            <li><a style={{color: "black"}}><FontAwesomeIcon icon={faUser} /></a></li>
+           
+          </ul>   
+        </div>
+
+      </section>
       <div className="marketplacemainpage">
       <div className="marketplacecontainer">
         <h1 className="h1-marketplace">Marketplace</h1>

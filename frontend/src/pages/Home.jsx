@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import top from "../images/prod-img/Sand Top.jpg";
 import flower from "../images/prod-img/Handmade Tulip Flowers Bouquet,.jpg";
@@ -11,6 +11,7 @@ import jacket from "../images/prod-img/crochet pattern for girls jacket.jpg";
 import clip from "../images/clip.jpg";
 import hat from "../images/hat.jpg";
 import bokey from "../images/Crochet bouquet ✿.jpg";
+import Login from '../../src/User/login';
 
 
 const Home = () => {
@@ -20,9 +21,30 @@ const Home = () => {
   const cartNavigate =() =>{
     navigate('/shop')
   };
-  const userNavigate =() =>{
-    navigate('/login')
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+
+
+  const openModal = () => {
+    setModalIsOpen(true);
   };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+  };
+
+
+
+  const handleLogin = () => {
+    console.log('Logging in...');
+    closeModal();
+  };
+
+  const handleRegister = () => {
+    console.log('Registering...');
+    closeModal();
+  };
+
  
   return(
     <div>
@@ -36,7 +58,8 @@ const Home = () => {
           </ul>
           <ul id="icon-cart">
             <li><a href="cart.html" style={{color: "black"}}><FontAwesomeIcon icon={faCartShopping} /></a></li>
-            <li><a onClick={userNavigate} style={{color: "black"}}><FontAwesomeIcon icon={faUser} /></a></li>
+            <li><a onClick={openModal} style={{color: "black"}}><FontAwesomeIcon icon={faUser} /></a></li>
+            <Login isOpen={modalIsOpen} closeModal={closeModal} handleLogin={handleLogin} handleRegister={handleRegister} />
           </ul>   
         </div>
 

@@ -7,13 +7,14 @@
 }
 
 .marketplacecontainer{
-    width: 80%;
+    width: 70%;
     align-items: center;
     height: 100vh;
     display: flex;
     flex-direction: column;
     padding: 0 1rem;
 }
+
 
   .table-crochet {
     width: 100%;
@@ -24,12 +25,14 @@
   
   .table-crochet th, .table-crochet td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding-left:45px;
+    padding-right: 45px;
     text-align: center;
   }
   
   .table-crochet th {
-    background-color: #f2f2f2;
+    background-color: #4cdabb;
+    
   }
   
   /* Add more styling as needed */
@@ -51,12 +54,14 @@
   }
 
   .actionbtntd{
-    width: 30%;
+    width: 100%;
+
   }
   .addnewprod{
+  margin-top: 10px;
     height: 10%;
     width:20%;
-    background-color: black;
+    background-color: rgb(19, 18, 18);
     border-radius: 10px;
     border: none; 
     border-width: 2px;
@@ -82,10 +87,16 @@
   }
 
   .subbtn{
-    height:5%;
-    width:10%;
+  justify-content: center;
+  display: flex;
+  margin-top: 1em;
+  margin-left: 15em;
+  padding: 0.5em;
+    height:50%;
+    width:15%;
+    color: white;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 4px;
     border: none; 
     border-width: 2px;
     border-color: #23d3ad;
@@ -98,41 +109,43 @@
     background-color: white;
   }
   .update{
-    height:5%;
-    width:10%;
-    background-color: black;
-    border-radius: 10px;
+    font-size: 12px;
+    height:90%;
+    width:80%;
+    background-color: rgb(0, 0, 0);
+    border-radius: 4px;
     border: none; 
     border-width: 2px;
     border-color: #23d3ad;
     box-shadow: rgba(1, 1, 2, 0.2) 0 2px 4px, rgba(83, 109, 254, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
     box-sizing: border-box;
     cursor: pointer;
+    color: white;
   }
   .update:hover{
+    color: black;
     border: 10px black;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
   }
   .delete{
-    height:5%;
-    width:10%;
+    font-size: 12px;
+    height:90%;
+    width:80%;
     background-color: black;
-    border-radius: 10px;
+    border-radius: 4px;
     border: none; 
     border-width: 2px;
+    color: white;
     border-color: #23d3ad;
     box-shadow: rgba(1, 1, 2, 0.2) 0 2px 4px, rgba(83, 109, 254, 0.15) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
     box-sizing: border-box;
     cursor: pointer;
   }
   .delete:hover{
+    color: black;
     border: 10px black;
     background-color: white;
   }
-
-
-
-
   .button {
     align-items: center;
     appearance: none;
@@ -180,6 +193,26 @@
     transform: translateY(2px);
   }
 
+
+
+
+
+  /*UPDATE*/
+  .modal-overlay{
+    margin: 1em;
+  }
+  .modal-content h2{
+    justify-content: center;
+    text-align: center;
+  }
+
+
+
+
+
+
+
+
   /* ADD ITEM*/
 .add-container{
   height: 50%;
@@ -187,7 +220,7 @@
   background-color: #536DFE;
 }
   .form{
-   
+   height: fit-content;
     justify-content: center;
   }
   .form h1{
@@ -216,8 +249,7 @@
   .form:focus{
     box-shadow: 0 0 0 .15vw skyblue;
   }
-    button,
-  button:focus {
+  .addbtn {
     display: flex;
     justify-content: center;
     text-transform: ce;
@@ -236,7 +268,31 @@
     transition-timing-function: linear;
   }
 
-  button:active {
+  .addbtn:active {
     transform: translate(0, 0);
     border-bottom: 2px solid rgb(50, 50, 50);
   }
+
+  /* HEADER*/
+
+  
+#header{
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06)
+}
+#header h1{
+  font-size: 24px;
+  line-height: 64px;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 25em;
+}

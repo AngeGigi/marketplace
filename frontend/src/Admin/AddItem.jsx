@@ -1,7 +1,10 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AddItem =()=>{
+
+    const navigate = useNavigate();
 
     const [items, setItems]= useState({
         crochet_name:"",
@@ -14,13 +17,13 @@ const AddItem =()=>{
         setItems((prev)=>({...prev, image: e.target.files[0]}))
     };
 
-const handleChange=(e)=>{
-        setItems((prev)=>({...prev, [e.target.name]: e.target.value}))
-    };
-const handleClick= async e=>{
-    e.preventDefault()
-    console.log(items)
-    try{
+    const handleChange=(e)=>{
+            setItems((prev)=>({...prev, [e.target.name]: e.target.value}))
+        };
+
+    const handleClick= async e=>{
+        e.preventDefault()
+        try{
 
         const formdata = new FormData();
 
@@ -30,25 +33,25 @@ const handleClick= async e=>{
         formdata.append('price', items.price)
 
         
-        await axios.post("http://localhost:8000/add/crochet",formdata)
+        await axios.post("http://localhost:8000/add/crochet/",formdata)
 
     }catch(err){
         console.log(err)
     }
 }
-
-    console.log(items)
     return(
     
         <div className='add-content'>
             <div className='form'>
                 <h1>Add new Items</h1>
                 <input type='text' placeholder='name' onChange={handleChange} name="crochet_name" /> 
-                <input type='text' placeholder='description' onChange={handleChange} name="crochet_deests"/> 
-                <input type='file' placeholder='image' style={{width:'172px'}} onChange={handleChange} name="image"/>
-                <input type='text' placeholder='price' onChange={handleFileChange} name="price"/>   
+                <input  type='text' placeholder='description' onChange={handleChange} name="crochet_deests"/> 
+                <input type='file' placeholder='image' style={{width:'172px'}} onChange={handleFileChange} name="image"/>
+                <input type='number' placeholder='price' onChange={handleChange} name="price"/>   
 
-                <button onClick={handleClick}>Add</button>
+                <button onClick={handleClick} >
+                <Link to = '/dash'>Add item</Link>
+                </button>
             </div>
         
         </div>
