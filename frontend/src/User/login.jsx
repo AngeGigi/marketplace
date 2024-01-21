@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { animated, useSpring } from '@react-spring/web';
 import axios from 'axios';
-
+/*
 const Login = ({ isOpen, closeModal, handleLogin, handleRegister }) => {
     const [isSignup, setIsSignup] = useState(false);
     const [logs, setLogs] = useState([]);
@@ -84,4 +84,34 @@ const Login = ({ isOpen, closeModal, handleLogin, handleRegister }) => {
   );
 };
 
-export default Login
+export default Login*/
+
+function Login() {
+  <div>
+      <div className='login'>
+      <div className='registration'>
+          <h1> Login </h1>
+          <label>Username</label>
+          <input type='text'></input>
+          <label>Password</label>
+          <input type='text'></input>
+          <button>Log in</button>
+      </div>
+    </div>
+    <div className='login'>
+      <div className='registration'>
+          <h1> Registration</h1>
+          <label>Username</label>
+          <input type='text'></input>
+          <label>Password</label>
+          <input type='text'></input>
+          <button>Register</button>
+      </div>
+    </div>
+
+  </div>
+    
+}
+
+export default Login;
+

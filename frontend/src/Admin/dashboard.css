@@ -1,9 +1,11 @@
+
 .marketplacemainpage{
     
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
+    background-color: black;
 }
 
 .marketplacecontainer{
@@ -16,40 +18,40 @@
 }
 
 
-  .table-crochet {
+  .table-crochet-crochet {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     gap: 100px;
   }
   
-  .table-crochet th, .table-crochet td {
+  .table-crochet-crochet th, .table-crochet-crochet td {
     border: 1px solid #ddd;
     padding-left:45px;
     padding-right: 45px;
     text-align: center;
   }
   
-  .table-crochet th {
+  .table-crochet-crochet th {
     background-color: #4cdabb;
     
   }
   
   /* Add more styling as needed */
   
-  /* Example: Style the table rows alternately for better readability */
-  .table-crochet tbody tr:nth-child(even) {
+  /* Example: Style the table-crochet rows alternately for better readability */
+  .table-crochet-crochet tbody tr:nth-child(even) {
     background-color: #f9f9f9;
   }
   
   /* Example: Hover effect on rows */
-  .table-crochet tbody tr:hover {
+  .table-crochet-crochet tbody tr:hover {
     background-color: #e0e0e0;
 
   }
   
 
-  .table-crochet tbody tr{
+  .table-crochet-crochet tbody tr{
     height: 3rem;
   }
 
@@ -193,26 +195,6 @@
     transform: translateY(2px);
   }
 
-
-
-
-
-  /*UPDATE*/
-  .modal-overlay{
-    margin: 1em;
-  }
-  .modal-content h2{
-    justify-content: center;
-    text-align: center;
-  }
-
-
-
-
-
-
-
-
   /* ADD ITEM*/
 .add-container{
   height: 50%;
@@ -295,4 +277,79 @@
   justify-content: center;
   align-items: center;
   margin-left: 25em;
+}
+
+
+/*UPDATE MODAL*/
+
+
+.modal-overlay {
+  position: fixed;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.modal-content {
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  width: 20%;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+}
+
+.close-button {
+  position: absolute;
+  top: 2px;
+  right: -10px;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  color: #000000;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.addinputfield {
+  border-radius: 5px;
+  height: 2rem;
+  margin: 1rem 0;
+  width: 10rem;
+  border: 1px gray solid;
+  box-shadow: 10px 5px 15px rgba(0, 0, 0, 0.06)
+}
+
+.addinputfield::placeholder {
+  color: gray;
+  opacity: 0.5;
+}
+
+.subbtn {
+  background-color: #000000;
+  color: rgb(230, 230, 230);
+  border: 1px #7a7a7a solid;
+  border-radius: 5px;
+  margin-left:7em;
+  padding:1em;
+  text-align: center;
+  justify-content: center;
+}
+
+.subbtn:hover {
+  
+  cursor: pointer;
+  background-color: white;
+  color: #000000;
+  transition: 0.3s;
 }

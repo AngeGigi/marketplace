@@ -8,6 +8,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 const Dash = () => {
   const [crochet, setCrochet] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
+  const [isAddModalOpen, setAddModalOpen] = useState(false);      
   const [isUpdateModalOpen, setUpdateModalOpen] = useState(false);
   const [inputs, setInputs] = useState({
     crochet_name: '',
@@ -25,6 +26,10 @@ const Dash = () => {
     navigate('/shop')
   };
   
+  const homeNavigate =() =>{
+    navigate('/home')
+  };
+  
 
   useEffect(() => {
     const fetchAllItems = async () => {
@@ -37,6 +42,14 @@ const Dash = () => {
     };
     fetchAllItems();
   }, []);
+
+  const openModal = () =>{
+    setAddModalOpen(true);
+  }
+  const closeModal = () =>{
+    setAddModalOpen(false);
+  }
+
 
   const openUpdateModal = (item) => {
     setSelectedItem(item);
@@ -63,6 +76,35 @@ const Dash = () => {
   const handleChange = (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
+
+  const handleFileChange=(e)=>{
+    setInputs((prev)=>({...prev, image: e.target.files[0]}))
+};
+
+  const handleClick= async e =>{
+    e.preventDefault()
+    console.log(inputs)
+    
+    const formdata = new FormData();
+
+    formdata.append('crochet_name', inputs.crochet_name)
+    formdata.append('crochet_deets', inputs.crochet_deets)
+    formdata.append('image', inputs.image)
+    formdata.append('price', inputs.price)
+
+    try{
+    await axios.post("http://localhost:8000/addcrochet",formdata)
+    const res = await axios.get("http://localhost:8000/crochet")
+    const u = res.data
+    setInputs(u)
+    alert("Updated Successfully")
+
+    closeModal();
+}catch(err){
+    console.log(err)
+}
+}
+
 
   
 
@@ -118,7 +160,7 @@ const Dash = () => {
         <h1><i>Dashboard</i></h1>
         <div>
           <ul id="navbar">
-            <li><a className="active" href="Home.jsx">Home</a></li>
+            <li><a className="active" onClick={homeNavigate}>Home</a></li>
             <li><a onClick={cartNavigate}>Shop</a></li>
           </ul>
           <ul id="icon-cart">
@@ -151,13 +193,13 @@ const Dash = () => {
                   <td>{item.crochet_name}</td>
                   <td>{item.crochet_deets}</td>
                   <td>
-                    {item.image && (
+                    {
                       <img
-                        src={item.image}
-                        alt={item.image}
+                        src={`http://localhost:/images${item.image}`}
+                        
                         style={{ width: '50px', height: '50px' }}
                       />
-                    )}
+                    }
                   </td>
                   <td>{item.price}</td>
                   <td className="actionbtntd">
@@ -174,12 +216,38 @@ const Dash = () => {
           </table>
         </div>
 
+        {/** ADD ITEM */}
+
+        {isAddModalOpen && (
+          <div className='add-content'>
+            <span className='close' onClick={closeModal} 
+            style={{ width: '50px', height: '50px', cursor:'pointer'}}
+            >close</span>
+          <div className='form'>
+              <h1>Add new Items</h1>
+              <input type='text' placeholder='name' onChange={handleChange} name="crochet_name" /> 
+              <input  type='text' placeholder='description' onChange={handleChange} name="crochet_deets"/> 
+              <input type='file' placeholder='image'  onChange={handleFileChange} name="image"/>
+              <input type = 'number' placeholder='price' onChange={handleChange} name="price"/>  
+
+              <button onClick={handleClick} >
+              <Link to = '/dash'>Add item</Link>
+              </button>
+          </div>
+        </div>
+        )}
+        
+
+
+
+
         {/* Modal for Update */}
         {isUpdateModalOpen && (
           <div className="modal-overlay">
             <div className="modal-content">
-              <span className="close-button" onClick={closeUpdateModal}>
-                &times;
+              <span className="close-button" onClick={closeUpdateModal}
+              style={{ width: '50px', height: '50px', cursor:'pointer'}}>
+                &times; 
               </span>
               <form onSubmit={(e) => e.preventDefault()}>
                 <h2>Update Item</h2>
@@ -189,7 +257,7 @@ const Dash = () => {
                   placeholder="crochet name"
                   value={inputs.crochet_name}
                   onChange={(e) => handleChange(e)}
-                  name="crochet_name"
+                  name="name"
                 />
                 <input
                   className="addinputfield"
@@ -197,7 +265,7 @@ const Dash = () => {
                   placeholder="crochet description"
                   value={inputs.crochet_deets}
                   onChange={(e) => handleChange(e)}
-                  name="price"
+                  name="description"
                 />
                   <input
                   className="addinputfield"
@@ -226,7 +294,7 @@ const Dash = () => {
         )}
 
         <button className="addnewprod">
-          <Link to="/add" className="addtext" > Add new product</Link>
+          <Link onClick={openModal} className="addtext"> Add new product</Link>
         </button>
       </div>
     </div>

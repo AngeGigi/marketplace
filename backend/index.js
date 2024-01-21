@@ -1,6 +1,7 @@
 import cors from 'cors';
 import express from "express";
 import multer from 'multer';
+import bodyParser from 'body-parser';
 import mysql from "mysql";
 import path from 'path'
 
@@ -8,6 +9,8 @@ const app = express()
 
 app.use(express.json());
 app.use(cors());
+app.use(express.static('public'));
+app.use(bodyParser.json());
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -21,7 +24,7 @@ const storage = multer.diskStorage({
         cb(null, "./public/images")
     },
     filename: function (req, file, cb) {
-        cb(null, file.filename + "_" + Date.now()+ path.extname(file.originalname))
+        cb(null, file.fieldname + "_" + Date.now()+ path.extname(file.originalname))
     }
 });
 
@@ -43,7 +46,7 @@ app.get("/", (req, res)=>{
     res.json("Checked")
 })
 
-app.get("/crochet",(req, res)=>{
+app.get('/crochet',(req, res)=>{
     const q = "SELECT * FROM crochet";
     db.query(q, (err, data)=>{
         if(err) return res.json(err);
@@ -51,8 +54,8 @@ app.get("/crochet",(req, res)=>{
     });
 });
 
-app.post("/add/crochet", upload.single('image'), (req, res) => {
-    const q = "INSERT INTO crochet (`crochet_name`, `crochet_deets`, `image`, `price`) VALUE (?)";
+app.post('/addcrochet', upload.single('image'), (req, res) => {
+    const q = "INSERT INTO crochet (crochet_name, crochet_deets, image, price) VALUE (?)";
     const values = [
         req.body.crochet_name,
         req.body.crochet_deets,
@@ -60,20 +63,34 @@ app.post("/add/crochet", upload.single('image'), (req, res) => {
         req.body.price,
     ];
 
-    console.log(values)
+    console.log(values);
 
     db.query(q, [values], (err, data) => {
-        if (err) return res.json(err)
-        return res.json(data)
+        if (err) return res.json(err);
+        return res.json(data);
     })
 })
 
+/*app.post('/add/acrochet', upload.single('image'), (req, res) =>{
+    const {crochet_name, crochet_deets, image, price} = req.body;
+    const sql = 'INSERT INTO items (crochet_name, crochet_deets, image, price) VALUES (?,?)';
+    db.query(sql, [crochet_name, crochet_deets, image, price]), (err, result) =>{
+        if(err){
+            console.error('Error adding item to database', err);
+            res.status(500).send('Error adding item to database');
+        } else{
+            console.log('Item added suucessfully');
+            res.status(200).send('Item added suucessfully');
+        }
+    }
+})*/
+
 app.post("/adminuser", (res,req) =>{
     console.log("Received login request:", req.body);
-    const { username, password} = req.body;
+    const { uname, pword} = req.body;
 
     const q = "SELECT * FROM adminuser WHERE username =? AND password =?";
-    db.query(q, [username, password], (error, results)=>{
+    db.query(q, [uname, pword], (error, results)=>{
         if(error){
             console.error('Error executing MSQL query:', error);
             res.status(500).json({success:false, message:'Internal Server Error'});
@@ -116,12 +133,13 @@ app.delete("/crochet/:id", (req, res) =>{
 
 app.put("/crochet:id", (req, res) => {
     const d =req.params.id;
-    const q = "UPDATE crochet SET `crochet_name` =?, `crochet_deets` =?, `price` =?, `image` = ? WHERE id =?";
+    const q = "UPDATE crochet SET `crochet_name` =?, `crochet_deets` =?, `image` = ?, `price` =? WHERE id =?";
 
     const values =[
         req.body.crochet_name,
         req.body.crochet_deets,
         req.body.image,
+        req.body.price,
         idcrochet,
     ];
 
